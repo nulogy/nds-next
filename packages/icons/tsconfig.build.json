@@ -11,7 +11,9 @@
   "exclude": [
     "test/**/*",
     "dist/**/*",
-    "src/collect-icon-svgs.ts",
-    "src/generate-types.ts"
+    "src/collectIconSvgs.ts",
+    "src/generateTypes.ts",
+    "src/build-tools.ts",
+    "src/generateIcons.ts"
   ]
 }

@@ -1,8 +1,12 @@
 // Export the static IconData type
-export type { IconData } from "./types.d.ts";
+export interface IconData {
+  path: string[];
+  viewBox: string;
+}
 
 // Export the parseSvg function
 export { default as parseSvg } from "./parseSvg.js";
 
-// Export the type generation functions for build tools
-export { generateIconTypeDeclarations, writeTypeDeclarations } from "./generateTypes.js";
+// Export icons data and types
+export { icons, type IconName } from "./icons.js";
+export { icons as default } from "./icons.js";
