@@ -1,7 +1,11 @@
 import fs from "fs";
-import path from "path";
-import parseSvg from "./parseSvg.ts";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import parseSvg from "./parseSvg.js";
+import type { IconData } from "./types.d.ts";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const jsonPath = path.join(__dirname, "..", "assets", "icons.json");
 const svgPath = path.join(__dirname, "..", "assets");
 
@@ -17,7 +21,7 @@ const icons = fs
     };
   });
 
-const iconData = {};
+const iconData: Record<string, IconData> = {};
 
 icons.forEach(({ svg, name }) => {
   const { path, viewBox } = parseSvg(svg);
