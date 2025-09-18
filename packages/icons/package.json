@@ -1,0 +1,28 @@
+{
+  "name": "@nulogy/icons",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "test": "node --test --experimental-strip-types test/**/*.test.ts",
+    "build": "tsc --project tsconfig.build.json",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.17.0",
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "@types/sax": "^1.2.7",
+    "fast-xml-parser": "^5.2.5"
+  },
+  "dependencies": {
+    "sax": "^1.4.1"
+  }
+}
