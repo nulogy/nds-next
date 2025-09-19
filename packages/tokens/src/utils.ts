@@ -22,11 +22,13 @@ export const fmt = new Intl.NumberFormat("en-CA", {
 export function pxs<T extends Record<string, number>>(
 	config: T,
 ): { [K in keyof T]: string } {
-	return Object.entries(config).reduce(
-		(acc, [key, value]) => ({
-			...acc,
-			[key]: `${value}px`,
-		}),
-		{},
-	) as { [K in keyof T]: string };
+	const result = {} as { [K in keyof T]: string };
+
+	for (const key in config) {
+		if (Object.hasOwn(config, key)) {
+			result[key] = `${config[key]}px`;
+		}
+	}
+
+	return result;
 }
