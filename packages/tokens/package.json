@@ -8,7 +8,7 @@
   "scripts": {
     "build": "./script/build.sh",
     "compile": "tsc --project tsconfig.build.json",
-    "generate": "node --loader ts-node/esm src/build/main.ts",
+    "generate": "tsx src/build/main.ts",
     "clean": "rm -rf output",
     "test": "node --test",
     "test:watch": "node --test --watch",
@@ -20,7 +20,7 @@
   "packageManager": "pnpm@10.17.0",
   "devDependencies": {
     "es-toolkit": "^1.39.10",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   },
   "files": [
