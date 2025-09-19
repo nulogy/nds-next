@@ -28,6 +28,12 @@ importers:
         specifier: ^1.2.7
         version: 1.2.7
 
+  packages/tokens:
+    devDependencies:
+      es-toolkit:
+        specifier: ^1.39.10
+        version: 1.39.10
+
 packages:
 
   '@types/node@24.5.2':
@@ -35,6 +41,9 @@ packages:
 
   '@types/sax@1.2.7':
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
+
+  es-toolkit@1.39.10:
+    resolution: {integrity: sha512-E0iGnTtbDhkeczB0T+mxmoVlT4YNweEKBLq7oaU4p11mecdsZpNWOglI4895Vh4usbQ+LsJiuLuI2L0Vdmfm2w==}
 
   sax@1.4.1:
     resolution: {integrity: sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==}
@@ -56,6 +65,8 @@ snapshots:
   '@types/sax@1.2.7':
     dependencies:
       '@types/node': 24.5.2
+
+  es-toolkit@1.39.10: {}
 
   sax@1.4.1: {}
 

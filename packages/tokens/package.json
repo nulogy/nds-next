@@ -1,0 +1,19 @@
+{
+  "name": "@nulogy/tokens",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test",
+    "test:watch": "node --test --watch",
+    "test:update-snapshots": "node --test --test-update-snapshots"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.17.0",
+  "devDependencies": {
+    "es-toolkit": "^1.39.10"
+  }
+}
