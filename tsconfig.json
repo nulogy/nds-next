@@ -1,4 +1,7 @@
 {
   "files": [],
-  "references": [{ "path": "./packages/icons" }]
+  "references": [
+    { "path": "./packages/icons" },
+    { "path": "./packages/tokens" }
+  ]
 }
