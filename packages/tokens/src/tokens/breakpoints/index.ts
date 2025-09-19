@@ -1,5 +1,5 @@
-import { BaseBreakpoints, baseBreakpoints } from './base'
-import { SemanticBreakpoints, semanticBreakpoints } from './semantic'
+import { BaseBreakpoints, baseBreakpoints } from './base.js'
+import { SemanticBreakpoints, semanticBreakpoints } from './semantic.js'
 
 type Breakpoint = {
   base: BaseBreakpoints

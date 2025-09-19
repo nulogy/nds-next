@@ -23,7 +23,7 @@ suite('generateTokens', () => {
   })
 
   test('should generate token files from fixture tokens', async (t) => {
-    await generateTokens(DEVICE_BASE_UNITS, path.relative(path.join(__dirname, '..', '..'), tmpOutputDir), tokensFixtureDir)
+    await generateTokens(DEVICE_BASE_UNITS, tmpOutputDir, tokensFixtureDir)
 
     const tokensCssPath = path.join(tmpOutputDir, 'nds_tokens.css')
     const tokensJsPath = path.join(tmpOutputDir, 'nds_tokens.js')

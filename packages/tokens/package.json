@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "pnpm run generate && tsc --project tsconfig.build.json",
+    "generate": "node --loader ts-node/esm src/build/main.ts",
+    "clean": "rm -rf dist output",
     "test": "node --test",
     "test:watch": "node --test --watch",
     "test:update-snapshots": "node --test --test-update-snapshots"
@@ -14,6 +18,12 @@
   "license": "ISC",
   "packageManager": "pnpm@10.17.0",
   "devDependencies": {
-    "es-toolkit": "^1.39.10"
-  }
+    "es-toolkit": "^1.39.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "files": [
+    "dist",
+    "output"
+  ]
 }

@@ -1,6 +1,6 @@
-import { StandardFontSize, standardFontSize } from './standard'
-import { ExperimentalFontSize, experimentalFontSizes } from './experimental'
-import { SemanticFontSize, semanticFontSizes } from './semantic'
+import { StandardFontSize, standardFontSize } from './standard.js'
+import { ExperimentalFontSize, experimentalFontSizes } from './experimental.js'
+import { SemanticFontSize, semanticFontSizes } from './semantic.js'
 
 interface FontSize {
   standard: Record<StandardFontSize, string>

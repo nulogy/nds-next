@@ -1,5 +1,5 @@
-import { baseColors, BaseColors } from './base'
-import { categoricalColors, CategoricalColors } from './categorical'
+import { baseColors, BaseColors } from './base.js'
+import { categoricalColors, CategoricalColors } from './categorical.js'
 
 interface Colors {
   base: BaseColors

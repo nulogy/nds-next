@@ -1,5 +1,5 @@
-import { Hex } from '../../utils'
-import { baseColors } from './base'
+import { Hex } from '../../utils.js'
+import { baseColors } from './base.js'
 
 type CategoricalColor = 1 | 2 | 3 | 4 | 5 | 6
 

@@ -1,4 +1,4 @@
-import { fmt, px } from '../../utils'
+import { fmt, px } from '../../utils.js'
 
 export type StandardFontSize = 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest'
 

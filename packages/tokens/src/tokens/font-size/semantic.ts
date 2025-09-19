@@ -1,4 +1,4 @@
-import { standardFontSize } from './standard'
+import { standardFontSize } from './standard.js'
 
 export type SemanticFontSize = 'heading1' | 'heading2' | 'heading3' | 'heading4' | 'base'
 

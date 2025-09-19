@@ -1,4 +1,4 @@
-import { fmt, px } from '../../utils'
+import { fmt, px } from '../../utils.js'
 
 type Space =
   | 'none'

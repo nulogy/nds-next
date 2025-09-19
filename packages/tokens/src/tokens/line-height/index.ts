@@ -1,5 +1,5 @@
-import { fmt, n } from '../../utils'
-import fontSize from '../font-size'
+import { fmt, n } from '../../utils.js'
+import fontSize from '../font-size/index.js'
 
 type LineHeight =
   | 'base'

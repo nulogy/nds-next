@@ -1,4 +1,4 @@
-import { pct, px } from '../../utils'
+import { pct, px } from '../../utils.js'
 
 type BorderRadius = 'small' | 'medium' | 'large' | 'circle' | 'rounded'
 

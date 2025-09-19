@@ -1,4 +1,4 @@
-import { px } from '../../utils'
+import { px } from '../../utils.js'
 
 export type SemanticBreakpoints = {
   phone: {

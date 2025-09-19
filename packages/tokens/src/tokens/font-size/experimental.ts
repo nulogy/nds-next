@@ -1,4 +1,4 @@
-import { fmt, px } from '../../utils'
+import { fmt, px } from '../../utils.js'
 
 export type ExperimentalFontSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
 

@@ -117,7 +117,7 @@ export async function generateTokens(
   const combinedCss = wrapCss(cssGroupArray)
   const combinedJs = wrapJs(jsGroupArray)
 
-  const outputDir = path.join(__dirname, '..', '..', '..', outputDirName)
+  const outputDir = path.resolve(outputDirName)
   await writeOutputFiles(outputDir, combinedCss, combinedJs)
 
   console.log(`Generated tokens for ${tokenFolders.join(', ')}`)

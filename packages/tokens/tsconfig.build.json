@@ -3,9 +3,10 @@
   "compilerOptions": {
     "noEmit": false,
     "allowImportingTsExtensions": false,
-    "outDir": "./dist",
-    "declaration": true,
-    "declarationMap": true
+    "module": "nodenext",
+    "target": "es2020",
+    "moduleResolution": "nodenext"
   },
-  "include": ["src/**/*"]
+  "include": ["src/index.ts", "src/utils.ts", "src/tokens/**/*"],
+  "exclude": ["src/build/**/*", "test/**/*"]
 }

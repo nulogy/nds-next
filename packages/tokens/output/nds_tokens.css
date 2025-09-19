@@ -1,0 +1,97 @@
+
+/* 
+  Nulogy Design System Tokens
+  THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY. 
+*/
+
+:root {
+  /*
+|-----------------------------------------------------------------------------
+| Font family
+|-----------------------------------------------------------------------------
+*/
+--nds-desktop-font-family-base: 'IBM Plex Sans', sans-serif;
+  --nds-desktop-font-family-mono: 'IBM Plex Mono', monospace;
+  --nds-desktop-font-family-sc: 'Noto Sans SC', sans-serif;
+  --nds-tablet-font-family-base: 'IBM Plex Sans', sans-serif;
+  --nds-tablet-font-family-mono: 'IBM Plex Mono', monospace;
+  --nds-tablet-font-family-sc: 'Noto Sans SC', sans-serif;
+  --nds-phone-font-family-base: 'IBM Plex Sans', sans-serif;
+  --nds-phone-font-family-mono: 'IBM Plex Mono', monospace;
+  --nds-phone-font-family-sc: 'Noto Sans SC', sans-serif;
+
+/*
+|-----------------------------------------------------------------------------
+| Font weight
+|-----------------------------------------------------------------------------
+*/
+--nds-desktop-font-weight-light: 300;
+  --nds-desktop-font-weight-normal: 400;
+  --nds-desktop-font-weight-medium: 500;
+  --nds-desktop-font-weight-bold: 700;
+  --nds-tablet-font-weight-light: 300;
+  --nds-tablet-font-weight-normal: 400;
+  --nds-tablet-font-weight-medium: 500;
+  --nds-tablet-font-weight-bold: 700;
+  --nds-phone-font-weight-light: 300;
+  --nds-phone-font-weight-normal: 400;
+  --nds-phone-font-weight-medium: 500;
+  --nds-phone-font-weight-bold: 700;
+
+/*
+|-----------------------------------------------------------------------------
+| Shadow
+|-----------------------------------------------------------------------------
+*/
+--nds-desktop-shadow-small: 0px 1px 2px 0px rgba(1, 30, 56, 0.25);
+  --nds-desktop-shadow-medium: 0px 3px 8px 0px rgba(1, 30, 56, 0.18);
+  --nds-desktop-shadow-large: 0px 6px 12px 2px rgba(1, 30, 56, 0.15);
+  --nds-desktop-shadow-focus: 0px 0px 5px 0px rgba(33, 107, 235, .9);
+  --nds-desktop-shadow-error: 0px 0px 5px 0px rgba(204, 20, 57, .9);
+  --nds-tablet-shadow-small: 0px 1px 2px 0px rgba(1, 30, 56, 0.25);
+  --nds-tablet-shadow-medium: 0px 3px 8px 0px rgba(1, 30, 56, 0.18);
+  --nds-tablet-shadow-large: 0px 6px 12px 2px rgba(1, 30, 56, 0.15);
+  --nds-tablet-shadow-focus: 0px 0px 5px 0px rgba(33, 107, 235, .9);
+  --nds-tablet-shadow-error: 0px 0px 5px 0px rgba(204, 20, 57, .9);
+  --nds-phone-shadow-small: 0px 1px 2px 0px rgba(1, 30, 56, 0.25);
+  --nds-phone-shadow-medium: 0px 3px 8px 0px rgba(1, 30, 56, 0.18);
+  --nds-phone-shadow-large: 0px 6px 12px 2px rgba(1, 30, 56, 0.15);
+  --nds-phone-shadow-focus: 0px 0px 5px 0px rgba(33, 107, 235, .9);
+  --nds-phone-shadow-error: 0px 0px 5px 0px rgba(204, 20, 57, .9);
+
+/*
+|-----------------------------------------------------------------------------
+| Z index
+|-----------------------------------------------------------------------------
+*/
+--nds-desktop-z-index-modal-header-and-footer: 2;
+  --nds-desktop-z-index-table-header: 10;
+  --nds-desktop-z-index-content: 100;
+  --nds-desktop-z-index-tabs-scroll-indicator: 200;
+  --nds-desktop-z-index-tabs-bar: 210;
+  --nds-desktop-z-index-nav-bar: 900;
+  --nds-desktop-z-index-sidebar: 800;
+  --nds-desktop-z-index-overlay: 1000;
+  --nds-desktop-z-index-open-control: 1000;
+  --nds-desktop-z-index-above-overlay: 1010;
+  --nds-tablet-z-index-modal-header-and-footer: 2;
+  --nds-tablet-z-index-table-header: 10;
+  --nds-tablet-z-index-content: 100;
+  --nds-tablet-z-index-tabs-scroll-indicator: 200;
+  --nds-tablet-z-index-tabs-bar: 210;
+  --nds-tablet-z-index-nav-bar: 900;
+  --nds-tablet-z-index-sidebar: 800;
+  --nds-tablet-z-index-overlay: 1000;
+  --nds-tablet-z-index-open-control: 1000;
+  --nds-tablet-z-index-above-overlay: 1010;
+  --nds-phone-z-index-modal-header-and-footer: 2;
+  --nds-phone-z-index-table-header: 10;
+  --nds-phone-z-index-content: 100;
+  --nds-phone-z-index-tabs-scroll-indicator: 200;
+  --nds-phone-z-index-tabs-bar: 210;
+  --nds-phone-z-index-nav-bar: 900;
+  --nds-phone-z-index-sidebar: 800;
+  --nds-phone-z-index-overlay: 1000;
+  --nds-phone-z-index-open-control: 1000;
+  --nds-phone-z-index-above-overlay: 1010;
+}

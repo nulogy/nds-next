@@ -1,4 +1,4 @@
-import { Hex } from '../../utils'
+import { Hex } from '../../utils.js'
 
 type BaseColor =
   | 'black'

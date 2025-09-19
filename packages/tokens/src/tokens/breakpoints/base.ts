@@ -1,4 +1,4 @@
-import { px } from '../../utils'
+import { px } from '../../utils.js'
 
 type BaseBreakpoint = 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge'
 
