@@ -2,7 +2,7 @@ import assert from "node:assert";
 import { readFile } from "node:fs/promises";
 import * as path from "node:path";
 import { suite, test } from "node:test";
-import { fileURLToPath } from "url";
+import { fileURLToPath } from "node:url";
 import parseSvg from "../src/parseSvg.ts";
 
 const __filename = fileURLToPath(import.meta.url);

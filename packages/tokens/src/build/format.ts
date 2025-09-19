@@ -105,7 +105,7 @@ export function wrapCss(
 ): string {
 	const content = groups
 		.map((group) => {
-			const headerPart = group.header ? group.header + "\n" : "";
+			const headerPart = group.header ? `${group.header}\n` : "";
 			return headerPart + group.cssVars.join("\n  ");
 		})
 		.join("\n\n");

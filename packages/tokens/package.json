@@ -9,7 +9,7 @@
 		"build": "./script/build.sh",
 		"compile": "tsc --project tsconfig.build.json",
 		"generate": "tsx src/build/main.ts",
-		"clean": "rm -rf output",
+		"clean": "rm -rf output dist",
 		"test": "node --test",
 		"test:watch": "node --test --watch",
 		"test:update-snapshots": "node --test --test-update-snapshots"

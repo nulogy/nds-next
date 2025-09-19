@@ -21,6 +21,7 @@
 		"LICENSE"
 	],
 	"scripts": {
+		"clean": "rm -rf dist",
 		"test": "node --test",
 		"build": "./scripts/build.sh",
 		"prepublishOnly": "pnpm build"
