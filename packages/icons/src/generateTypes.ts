@@ -40,19 +40,32 @@ export function writeTypeDeclarations(
 }
 
 /**
- * Main function that orchestrates the type generation process.
- * Reads icon names from the assets directory and generates type declarations.
+ * Reads icon names from the assets directory.
+ *
+ * @param assetsDir - Path to the assets directory (optional, defaults to relative path)
+ * @returns Array of icon names (without .svg extension)
  */
-function generateIconTypes() {
-	const iconNames = fs
-		.readdirSync(ASSETS_DIR)
+export function readIconNames(assetsDir: string = ASSETS_DIR): string[] {
+	return fs
+		.readdirSync(assetsDir)
 		.filter((file) => file.endsWith(".svg"))
 		.map((file) => file.replace(".svg", ""));
+}
 
+/**
+ * Main function that orchestrates the type generation process.
+ * Reads icon names from the assets directory and generates type declarations.
+ *
+ * @param assetsDir - Path to the assets directory (optional, defaults to relative path)
+ * @param outputPath - Path where to write the type declarations (optional, defaults to src/index.d.ts)
+ */
+export function generateIconTypes(
+	assetsDir: string = ASSETS_DIR,
+	outputPath: string = TYPES_FILE,
+): void {
+	const iconNames = readIconNames(assetsDir);
 	const declarationContent = generateIconTypeDeclarations(iconNames);
-	writeTypeDeclarations(declarationContent, TYPES_FILE);
+	writeTypeDeclarations(declarationContent, outputPath);
 
 	console.log(`Generated types for ${iconNames.length} icons 🎉`);
 }
-
-generateIconTypes();

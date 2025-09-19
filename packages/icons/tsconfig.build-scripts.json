@@ -1,0 +1,16 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"noEmit": false,
+		"allowImportingTsExtensions": false,
+		"outDir": "./temp",
+		"module": "esnext",
+		"target": "es2022",
+		"moduleResolution": "bundler",
+		"declaration": false,
+		"declarationMap": false,
+		"sourceMap": false
+	},
+	"include": ["src/generateTypes.ts"],
+	"exclude": []
+}

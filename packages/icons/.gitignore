@@ -1,0 +1,9 @@
+# Generated source files
+src/icons.ts
+src/index.d.ts
+
+# Build artifacts
+temp/
+
+# TypeScript build info
+*.tsbuildinfo
