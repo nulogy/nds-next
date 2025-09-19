@@ -1,57 +1,57 @@
 {
-  "name": "@nulogy/icons",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "A comprehensive icon library with TypeScript support for the Nulogy Design System",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./types": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/types.js"
-    }
-  },
-  "files": [
-    "dist/**/*",
-    "README.md",
-    "LICENSE"
-  ],
-  "scripts": {
-    "test": "node --test",
-    "prebuild": "node src/generateIcons.ts",
-    "build": "tsc --project tsconfig.build.json",
-    "prepublishOnly": "pnpm build"
-  },
-  "keywords": [
-    "icons",
-    "svg",
-    "typescript",
-    "design-system",
-    "nulogy",
-    "ui",
-    "components"
-  ],
-  "author": "Nulogy",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nulogy/nds.git",
-    "directory": "packages/icons"
-  },
-  "homepage": "https://github.com/nulogy/nds/tree/main/packages/icons",
-  "bugs": {
-    "url": "https://github.com/nulogy/nds/issues"
-  },
-  "packageManager": "pnpm@10.17.0",
-  "devDependencies": {
-    "@types/node": "^24.5.2",
-    "@types/sax": "^1.2.7"
-  },
-  "dependencies": {
-    "sax": "^1.4.1"
-  }
+	"name": "@nulogy/icons",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "A comprehensive icon library with TypeScript support for the Nulogy Design System",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./types": {
+			"types": "./dist/types.d.ts",
+			"import": "./dist/types.js"
+		}
+	},
+	"files": [
+		"dist/**/*",
+		"README.md",
+		"LICENSE"
+	],
+	"scripts": {
+		"test": "node --test",
+		"prebuild": "node src/generateIcons.ts",
+		"build": "tsc --project tsconfig.build.json",
+		"prepublishOnly": "pnpm build"
+	},
+	"keywords": [
+		"icons",
+		"svg",
+		"typescript",
+		"design-system",
+		"nulogy",
+		"ui",
+		"components"
+	],
+	"author": "Nulogy",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nulogy/nds.git",
+		"directory": "packages/icons"
+	},
+	"homepage": "https://github.com/nulogy/nds/tree/main/packages/icons",
+	"bugs": {
+		"url": "https://github.com/nulogy/nds/issues"
+	},
+	"packageManager": "pnpm@10.17.0",
+	"devDependencies": {
+		"@types/node": "^24.5.2",
+		"@types/sax": "^1.2.7"
+	},
+	"dependencies": {
+		"sax": "^1.4.1"
+	}
 }

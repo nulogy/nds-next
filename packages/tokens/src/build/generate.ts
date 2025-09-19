@@ -1,9 +1,9 @@
-import path from 'node:path'
-import fs from 'node:fs/promises'
-import { formatTokens, wrapCss, wrapJs } from './format.ts'
-import { snakeCase } from 'es-toolkit'
-import type { Device } from './constants.ts'
-import { fileURLToPath } from 'node:url'
+import fs from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { snakeCase } from "es-toolkit";
+import type { Device } from "./constants.ts";
+import { formatTokens, wrapCss, wrapJs } from "./format.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -16,50 +16,50 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
  * @returns An object with header, cssVars, and jsExports or null if processing fails.
  */
 async function processTokenFolder(
-  folder: string,
-  tokenDir: string,
-  devices: Array<Device>,
-  deviceBaseUnits: Record<Device, number>,
+	folder: string,
+	tokenDir: string,
+	devices: Array<Device>,
+	deviceBaseUnits: Record<Device, number>,
 ): Promise<{ header: string; cssVars: string[]; jsExports: string[] } | null> {
-  try {
-    const module = await import(path.join(tokenDir, folder, 'index.ts'))
-    const tokensFn = module.default
-    const folderName = snakeCase(folder)
+	try {
+		const module = await import(path.join(tokenDir, folder, "index.ts"));
+		const tokensFn = module.default;
+		const folderName = snakeCase(folder);
 
-    const formattedForDevices = devices.map((device, index) => {
-      const baseUnit = deviceBaseUnits[device]
-      const tokens = tokensFn(baseUnit)
-      return formatTokens(tokens, folderName, device, [], index === 0)
-    })
+		const formattedForDevices = devices.map((device, index) => {
+			const baseUnit = deviceBaseUnits[device];
+			const tokens = tokensFn(baseUnit);
+			return formatTokens(tokens, folderName, device, [], index === 0);
+		});
 
-    const isFormatted = formattedForDevices.length > 0
-    const firstFormatted = isFormatted ? formattedForDevices[0] : null
+		const isFormatted = formattedForDevices.length > 0;
+		const firstFormatted = isFormatted ? formattedForDevices[0] : null;
 
-    if (isFormatted && firstFormatted) {
-      const header = firstFormatted.header
-      const combinedCssVars = formattedForDevices.flatMap((f) => f.cssVars)
-      const combinedJsExports = formattedForDevices.flatMap((f) => f.jsExports)
-      return {
-        header,
-        cssVars: combinedCssVars,
-        jsExports: combinedJsExports,
-      }
-    }
-    return null
-  } catch (err) {
-    console.error(`Error processing folder ${folder}:`, err)
-    return null
-  }
+		if (isFormatted && firstFormatted) {
+			const header = firstFormatted.header;
+			const combinedCssVars = formattedForDevices.flatMap((f) => f.cssVars);
+			const combinedJsExports = formattedForDevices.flatMap((f) => f.jsExports);
+			return {
+				header,
+				cssVars: combinedCssVars,
+				jsExports: combinedJsExports,
+			};
+		}
+		return null;
+	} catch (err) {
+		console.error(`Error processing folder ${folder}:`, err);
+		return null;
+	}
 }
 
 async function prepareOutputDir(outputDir: string) {
-  try {
-    await fs.access(outputDir, fs.constants.F_OK);
-    return true;
-  } catch (err) {
-    await fs.mkdir(outputDir, { recursive: true })
-    return true;
-  }
+	try {
+		await fs.access(outputDir, fs.constants.F_OK);
+		return true;
+	} catch (_) {
+		await fs.mkdir(outputDir, { recursive: true });
+		return true;
+	}
 }
 
 /**
@@ -68,14 +68,18 @@ async function prepareOutputDir(outputDir: string) {
  * @param combinedCss The combined CSS string.
  * @param combinedJs The combined JS string.
  */
-async function writeOutputFiles(outputDir: string, combinedCss: string, combinedJs: string) {
-  await prepareOutputDir(outputDir)
+async function writeOutputFiles(
+	outputDir: string,
+	combinedCss: string,
+	combinedJs: string,
+) {
+	await prepareOutputDir(outputDir);
 
-  await fs.writeFile(path.join(outputDir, 'nds_tokens.css'), combinedCss)
-  await fs.writeFile(path.join(outputDir, 'nds_tokens.js'), combinedJs)
+	await fs.writeFile(path.join(outputDir, "nds_tokens.css"), combinedCss);
+	await fs.writeFile(path.join(outputDir, "nds_tokens.js"), combinedJs);
 
-  // We generate a TypeScript file because we want to generate type declarations for the tokens.
-  await fs.writeFile(path.join(outputDir, 'nds_tokens.ts'), combinedJs)
+	// We generate a TypeScript file because we want to generate type declarations for the tokens.
+	await fs.writeFile(path.join(outputDir, "nds_tokens.ts"), combinedJs);
 }
 
 /**
@@ -85,40 +89,52 @@ async function writeOutputFiles(outputDir: string, combinedCss: string, combined
  * @param tokensDir Optional. The tokens directory to use (defaults to ../tokens).
  */
 export async function generateTokens(
-  deviceBaseUnits: Record<Device, number>,
-  outputDirName: string,
-  tokensDir: string = path.resolve(__dirname, '../tokens'),
+	deviceBaseUnits: Record<Device, number>,
+	outputDirName: string,
+	tokensDir: string = path.resolve(__dirname, "../tokens"),
 ) {
-  const tokenFolders = await fs.readdir(tokensDir);
-  await Promise.all(tokenFolders.filter(async (folder) => (await fs.stat(path.join(tokensDir, folder))).isDirectory()));
+	const tokenFolders = await fs.readdir(tokensDir);
+	await Promise.all(
+		tokenFolders.filter(async (folder) =>
+			(await fs.stat(path.join(tokensDir, folder))).isDirectory(),
+		),
+	);
 
-  const folderGroups: Record<string, { header: string; cssVars: string[]; jsExports: string[] }> = {}
-  const devices = Object.keys(deviceBaseUnits) as Array<Device>
+	const folderGroups: Record<
+		string,
+		{ header: string; cssVars: string[]; jsExports: string[] }
+	> = {};
+	const devices = Object.keys(deviceBaseUnits) as Array<Device>;
 
-  await Promise.all(
-    tokenFolders.map(async (folder) => {
-      const result = await processTokenFolder(folder, tokensDir, devices, deviceBaseUnits)
-      if (result) {
-        folderGroups[snakeCase(folder)] = result
-      }
-    }),
-  )
+	await Promise.all(
+		tokenFolders.map(async (folder) => {
+			const result = await processTokenFolder(
+				folder,
+				tokensDir,
+				devices,
+				deviceBaseUnits,
+			);
+			if (result) {
+				folderGroups[snakeCase(folder)] = result;
+			}
+		}),
+	);
 
-  const cssGroupArray = Object.values(folderGroups).map((group) => ({
-    header: group.header,
-    cssVars: group.cssVars,
-  }))
+	const cssGroupArray = Object.values(folderGroups).map((group) => ({
+		header: group.header,
+		cssVars: group.cssVars,
+	}));
 
-  const jsGroupArray = Object.values(folderGroups).map((group) => ({
-    header: group.header,
-    jsExports: group.jsExports,
-  }))
+	const jsGroupArray = Object.values(folderGroups).map((group) => ({
+		header: group.header,
+		jsExports: group.jsExports,
+	}));
 
-  const combinedCss = wrapCss(cssGroupArray)
-  const combinedJs = wrapJs(jsGroupArray)
+	const combinedCss = wrapCss(cssGroupArray);
+	const combinedJs = wrapJs(jsGroupArray);
 
-  const outputDir = path.resolve(outputDirName)
-  await writeOutputFiles(outputDir, combinedCss, combinedJs)
+	const outputDir = path.resolve(outputDirName);
+	await writeOutputFiles(outputDir, combinedCss, combinedJs);
 
-  console.log(`Generated tokens for ${tokenFolders.join(', ')}`)
+	console.log(`Generated tokens for ${tokenFolders.join(", ")}`);
 }

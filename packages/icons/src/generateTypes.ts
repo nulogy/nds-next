@@ -10,12 +10,12 @@ const TYPES_FILE = path.join(__dirname, "index.d.ts");
 /**
  * Generates TypeScript type declarations for icon names.
  * This function is pure and testable - it only generates the type content.
- * 
+ *
  * @param iconNames - Array of icon names (without .svg extension)
  * @returns The TypeScript declaration content as a string
  */
 export function generateIconTypeDeclarations(iconNames: string[]): string {
-  return `declare module "@nulogy/icons" {
+	return `declare module "@nulogy/icons" {
   export type { IconData } from "./types.d.ts";
 
   export type IconName = ${iconNames.map((name) => `"${name}"`).join(" | ")};
@@ -28,12 +28,15 @@ export function generateIconTypeDeclarations(iconNames: string[]): string {
 
 /**
  * Writes the generated type declarations to a file.
- * 
+ *
  * @param content - The TypeScript declaration content to write
  * @param outputPath - The file path where to write the declarations
  */
-export function writeTypeDeclarations(content: string, outputPath: string): void {
-  fs.writeFileSync(outputPath, content);
+export function writeTypeDeclarations(
+	content: string,
+	outputPath: string,
+): void {
+	fs.writeFileSync(outputPath, content);
 }
 
 /**
@@ -41,15 +44,15 @@ export function writeTypeDeclarations(content: string, outputPath: string): void
  * Reads icon names from the assets directory and generates type declarations.
  */
 function generateIconTypes() {
-  const iconNames = fs
-    .readdirSync(ASSETS_DIR)
-    .filter((file) => file.endsWith(".svg"))
-    .map((file) => file.replace(".svg", ""));
+	const iconNames = fs
+		.readdirSync(ASSETS_DIR)
+		.filter((file) => file.endsWith(".svg"))
+		.map((file) => file.replace(".svg", ""));
 
-  const declarationContent = generateIconTypeDeclarations(iconNames);
-  writeTypeDeclarations(declarationContent, TYPES_FILE);
+	const declarationContent = generateIconTypeDeclarations(iconNames);
+	writeTypeDeclarations(declarationContent, TYPES_FILE);
 
-  console.log(`Generated types for ${iconNames.length} icons 🎉`);
+	console.log(`Generated types for ${iconNames.length} icons 🎉`);
 }
 
 generateIconTypes();

@@ -1,13 +1,19 @@
-import { capitalize, kebabCase, startCase, isPlainObject, snakeCase } from 'es-toolkit'
-import { toUpper } from 'es-toolkit/compat'
-import type { Device, TokenValue } from './constants.ts'
+import {
+	capitalize,
+	isPlainObject,
+	kebabCase,
+	snakeCase,
+	startCase,
+} from "es-toolkit";
+import { toUpper } from "es-toolkit/compat";
+import type { Device, TokenValue } from "./constants.ts";
 
 export interface FormattedTokens {
-  header: string
-  cssVars: string[]
-  jsExports: string[]
-  css: string
-  js: string
+	header: string;
+	cssVars: string[];
+	jsExports: string[];
+	css: string;
+	js: string;
 }
 
 /**
@@ -17,14 +23,14 @@ export interface FormattedTokens {
  * @returns A header comment string.
  */
 function generateHeader(folderName: string, includeHeader: boolean): string {
-  if (!includeHeader) return ''
+	if (!includeHeader) return "";
 
-  return `
+	return `
 /*
 |-----------------------------------------------------------------------------
 | ${capitalize(startCase(folderName))}
 |-----------------------------------------------------------------------------
-*/`.trim()
+*/`.trim();
 }
 
 /**
@@ -37,48 +43,56 @@ function generateHeader(folderName: string, includeHeader: boolean): string {
  * @returns An object containing a header, arrays of CSS variables and JS exports, plus full wrapped strings.
  */
 export function formatTokens(
-  tokenObject: Record<string, TokenValue>,
-  folderName: string,
-  device: Device,
-  prefix: string[] = [],
-  includeHeader: boolean = true,
+	tokenObject: Record<string, TokenValue>,
+	folderName: string,
+	device: Device,
+	prefix: string[] = [],
+	includeHeader: boolean = true,
 ): FormattedTokens {
-  const cssVars: string[] = []
-  const jsExports: string[] = []
+	const cssVars: string[] = [];
+	const jsExports: string[] = [];
 
-  Object.entries(tokenObject).forEach(([key, value]) => {
-    const currentPath = [...prefix, key]
+	Object.entries(tokenObject).forEach(([key, value]) => {
+		const currentPath = [...prefix, key];
 
-    if (isPlainObject(value)) {
-      const nestedFormats = formatTokens(value as Record<string, TokenValue>, folderName, device, currentPath, false)
-      cssVars.push(...nestedFormats.cssVars)
-      jsExports.push(...nestedFormats.jsExports)
-    } else {
-      const cssVarName = `--${kebabCase(`nds-${device}-${folderName}-${currentPath.join('-')}`)}`
-      const jsVarName = toUpper(snakeCase(`${device}_${folderName}_${currentPath.join('_')}`))
+		if (isPlainObject(value)) {
+			const nestedFormats = formatTokens(
+				value as Record<string, TokenValue>,
+				folderName,
+				device,
+				currentPath,
+				false,
+			);
+			cssVars.push(...nestedFormats.cssVars);
+			jsExports.push(...nestedFormats.jsExports);
+		} else {
+			const cssVarName = `--${kebabCase(`nds-${device}-${folderName}-${currentPath.join("-")}`)}`;
+			const jsVarName = toUpper(
+				snakeCase(`${device}_${folderName}_${currentPath.join("_")}`),
+			);
 
-      const quote = typeof value === 'number' ? '' : '"'
+			const quote = typeof value === "number" ? "" : '"';
 
-      cssVars.push(`${cssVarName}: ${value};`)
-      jsExports.push(`export const ${jsVarName} = ${quote}${value}${quote};`)
-    }
-  })
+			cssVars.push(`${cssVarName}: ${value};`);
+			jsExports.push(`export const ${jsVarName} = ${quote}${value}${quote};`);
+		}
+	});
 
-  const header = generateHeader(folderName, includeHeader)
-  const css = `${header}
+	const header = generateHeader(folderName, includeHeader);
+	const css = `${header}
 :root {
-  ${cssVars.join('\n  ')}
-}`
-  const js = `${header}
-${jsExports.join('\n')}`
+  ${cssVars.join("\n  ")}
+}`;
+	const js = `${header}
+${jsExports.join("\n")}`;
 
-  return {
-    header,
-    cssVars,
-    jsExports,
-    css,
-    js,
-  }
+	return {
+		header,
+		cssVars,
+		jsExports,
+		css,
+		js,
+	};
 }
 
 /**
@@ -86,14 +100,16 @@ ${jsExports.join('\n')}`
  * @param groups Array of objects with a header and CSS variable declarations.
  * @returns A single CSS string.
  */
-export function wrapCss(groups: { header: string; cssVars: string[] }[]): string {
-  const content = groups
-    .map((group) => {
-      const headerPart = group.header ? group.header + '\n' : ''
-      return headerPart + group.cssVars.join('\n  ')
-    })
-    .join('\n\n')
-  return `
+export function wrapCss(
+	groups: { header: string; cssVars: string[] }[],
+): string {
+	const content = groups
+		.map((group) => {
+			const headerPart = group.header ? group.header + "\n" : "";
+			return headerPart + group.cssVars.join("\n  ");
+		})
+		.join("\n\n");
+	return `
 /* 
   Nulogy Design System Tokens
   THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY. 
@@ -102,7 +118,7 @@ export function wrapCss(groups: { header: string; cssVars: string[] }[]): string
 :root {
   ${content}
 }
-`
+`;
 }
 
 /**
@@ -110,19 +126,21 @@ export function wrapCss(groups: { header: string; cssVars: string[] }[]): string
  * @param groups Array of objects with a header and JS export statements.
  * @returns A single JS string.
  */
-export function wrapJs(groups: { header: string; jsExports: string[] }[]): string {
-  const content = groups
-    .map((group) => {
-      const headerPart = group.header ? group.header + '\n' : ''
-      return headerPart + group.jsExports.join('\n')
-    })
-    .join('\n\n')
-  return `
+export function wrapJs(
+	groups: { header: string; jsExports: string[] }[],
+): string {
+	const content = groups
+		.map((group) => {
+			const headerPart = group.header ? `${group.header}\n` : "";
+			return `${headerPart}${group.jsExports.join("\n")}`;
+		})
+		.join("\n\n");
+	return `
 /* 
   Nulogy Design System Tokens
   THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY. 
 */
 
 ${content}
-`
+`;
 }

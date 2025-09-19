@@ -1,29 +1,29 @@
 {
-  "name": "@nulogy/tokens",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "./script/build.sh",
-    "compile": "tsc --project tsconfig.build.json",
-    "generate": "tsx src/build/main.ts",
-    "clean": "rm -rf output",
-    "test": "node --test",
-    "test:watch": "node --test --watch",
-    "test:update-snapshots": "node --test --test-update-snapshots"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.17.0",
-  "devDependencies": {
-    "es-toolkit": "^1.39.10",
-    "tsx": "^4.7.0",
-    "typescript": "^5.3.3"
-  },
-  "files": [
-    "dist"
-  ]
+	"name": "@nulogy/tokens",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "./script/build.sh",
+		"compile": "tsc --project tsconfig.build.json",
+		"generate": "tsx src/build/main.ts",
+		"clean": "rm -rf output",
+		"test": "node --test",
+		"test:watch": "node --test --watch",
+		"test:update-snapshots": "node --test --test-update-snapshots"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.17.0",
+	"devDependencies": {
+		"es-toolkit": "^1.39.10",
+		"tsx": "^4.7.0",
+		"typescript": "^5.3.3"
+	},
+	"files": [
+		"dist"
+	]
 }

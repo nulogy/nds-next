@@ -1,6 +1,6 @@
-import fs from "fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import fs from "fs";
 import parseSvg from "./parseSvg.ts";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -9,22 +9,22 @@ const iconsPath = path.join(__dirname, "icons.ts");
 const svgPath = path.join(__dirname, "..", "assets");
 
 const icons = fs
-  .readdirSync(svgPath)
-  .filter((file) => /\.svg$/.test(file))
-  .map((file) => {
-    const name = file.replace(".svg", "");
-    const svg = fs.readFileSync(`${svgPath}/${file}`, "utf8").toString();
-    return {
-      name,
-      svg,
-    };
-  });
+	.readdirSync(svgPath)
+	.filter((file) => /\.svg$/.test(file))
+	.map((file) => {
+		const name = file.replace(".svg", "");
+		const svg = fs.readFileSync(`${svgPath}/${file}`, "utf8").toString();
+		return {
+			name,
+			svg,
+		};
+	});
 
 const iconData: Record<string, { path: string[]; viewBox: string }> = {};
 
 icons.forEach(({ svg, name }) => {
-  const { path, viewBox } = parseSvg(svg);
-  iconData[name] = { path, viewBox };
+	const { path, viewBox } = parseSvg(svg);
+	iconData[name] = { path, viewBox };
 });
 
 // Generate TypeScript code

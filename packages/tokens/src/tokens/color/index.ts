@@ -1,13 +1,13 @@
-import { baseColors, BaseColors } from './base.js'
-import { categoricalColors, CategoricalColors } from './categorical.js'
+import { type BaseColors, baseColors } from "./base.js";
+import { type CategoricalColors, categoricalColors } from "./categorical.js";
 
 interface Colors {
-  base: BaseColors
-  categorical: CategoricalColors
+	base: BaseColors;
+	categorical: CategoricalColors;
 }
 
 export default () =>
-  ({
-    base: baseColors,
-    categorical: categoricalColors,
-  }) satisfies Colors
+	({
+		base: baseColors,
+		categorical: categoricalColors,
+	}) satisfies Colors;

@@ -1,12 +1,12 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "noEmit": false,
-    "allowImportingTsExtensions": false,
-    "module": "nodenext",
-    "target": "es2020",
-    "moduleResolution": "nodenext"
-  },
-  "include": ["src/index.ts", "src/utils.ts", "src/tokens/**/*"],
-  "exclude": ["src/build/**/*", "test/**/*"]
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"noEmit": false,
+		"allowImportingTsExtensions": false,
+		"module": "nodenext",
+		"target": "es2020",
+		"moduleResolution": "nodenext"
+	},
+	"include": ["src/index.ts", "src/utils.ts", "src/tokens/**/*"],
+	"exclude": ["src/build/**/*", "test/**/*"]
 }
