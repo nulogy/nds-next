@@ -1,4 +1,4 @@
-export type TokenValue = string | number | Record<string, any>;
+export type TokenValue = string | number | Record<string, string | number>;
 export type Device = "desktop" | "tablet" | "phone";
 
 export const DEVICE_BASE_UNITS: Record<Device, number> = {
