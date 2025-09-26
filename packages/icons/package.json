@@ -24,6 +24,7 @@
 		"clean": "rm -rf dist",
 		"test": "node --test",
 		"build": "./scripts/build.sh",
+		"typecheck": "sed -i '' 's/\\.js\"/\\.ts\"/g' src/index.ts && node src/generateIcons.ts && tsc --noEmit && sed -i '' 's/\\.ts\"/\\.js\"/g' src/index.ts && rm -f src/icons.ts",
 		"prepublishOnly": "pnpm build"
 	},
 	"keywords": [

@@ -1,0 +1,8 @@
+# Ignore generated files
+packages/*/dist/
+packages/*/output/
+node_modules/
+
+# Ignore specific dist directories
+dist/
+output/
