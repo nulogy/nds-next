@@ -9,10 +9,11 @@
 		"build": "./script/build.sh",
 		"compile": "tsc --project tsconfig.build.json",
 		"generate": "tsx src/build/main.ts",
-		"clean": "rm -rf output dist",
+		"clean": "rm -rf output",
 		"test": "node --test",
 		"test:watch": "node --test --watch",
-		"test:update-snapshots": "node --test --test-update-snapshots"
+		"test:update-snapshots": "node --test --test-update-snapshots",
+		"typecheck": "tsc --noEmit"
 	},
 	"keywords": [],
 	"author": "",

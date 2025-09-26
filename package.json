@@ -6,6 +6,7 @@
 	"scripts": {
 		"clobber": "pnpm --recursive clean",
 		"test": "pnpm --recursive test",
+		"typecheck": "pnpm --recursive typecheck",
 		"lint:fix": "biome check --write",
 		"format:fix": "biome format --write"
 	},

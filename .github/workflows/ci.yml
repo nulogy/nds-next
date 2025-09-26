@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Check formatting and lint
+        run: |
+          pnpm biome ci
+
+      - name: Type check
+        run: |
+          pnpm typecheck
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Build packages
+        run: |
+          pnpm --recursive build
+
+      - name: Verify build artifacts
+        run: |
+          # Check that icons package built successfully
+          if [ ! -d "packages/icons/dist" ]; then
+            echo "❌ Icons package dist directory not found"
+            exit 1
+          fi
+
+          # Check that tokens package built successfully  
+          if [ ! -d "packages/tokens/dist" ]; then
+            echo "❌ Tokens package dist directory not found"
+            exit 1
+          fi
+
+          echo "✅ All packages built successfully"
